@@ -9,7 +9,6 @@ import torch
 from torch import autocast
 from torch.nn import functional as F
 
-
 from diffusers import StableDiffusionPipeline, AutoencoderKL
 from diffusers import UNet2DConditionModel, PNDMScheduler, LMSDiscreteScheduler
 from diffusers.schedulers.scheduling_ddim import DDIMScheduler
@@ -30,7 +29,6 @@ from tqdm.auto import tqdm
 # from ldm.models.diffusion.ddim import DDIMSampler
 # from ldm.models.diffusion.plms import PLMSSampler
 # from ldm.dream.devices         import choose_torch_device
-
 
 device = 'cuda'
 

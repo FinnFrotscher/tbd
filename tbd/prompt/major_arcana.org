@@ -1,0 +1,324 @@
+# Tarot
+The standard tarot deck consists of 78 cards divided into two sections, 22 cards major arcanas and 56 Minor arcanas.
+
+* Structure
+Each card in the major arcana has a name and number.
+Sapiocentric Archetypes: Other cards are individuals who personify a particular approach to life, such as the Magician or the Hermit.
+Pure Ideas: Some names convey a card's meaning directly, such as Strength, Justice and Temperance.
+Larger Forces: There are also cards with astronomical names, such as the Star, Sun and Moon. They represent the elusive forces associated with these heavenly bodies.
+
+* About Fools Journey
+The Fools Journey is arrangment of the major arcanas into a coherent linear story that depicts the different stages of an individual's journey of inner growth.
+The 22 cards of the major arcana are the heart of the deck.
+Each of these cards symbolizes some universal aspect of human experience.
+They represent the archetypes - consistent, directing patterns of influence that are an inherent part of human nature.
+They represent your most basic concerns - your major feelings and motivations.
+The major arcana cards are special because they draw out deep and complex reactions.
+The images on the Rider-Waite deck are evocative because they combine esoteric symbolism with recognizable figures and situations.
+Many interpreters view the major arcana as showing the different stages on an individual's journey of inner growth - what some call the Fool's Journey.
+In these systems, each card stands for some quality or experience that we must incorporate before we can realize our wholeness.
+We all travel this road to self-actualization, though our trips more often involve detours, backups and restarts than smooth progression!
+Our specific paths are unique, but our milestones are universal.
+The 22 major arcana cards are markers on the path of inner development leading from earliest awareness (card 0) to integration and fulfillment (card 21).
+The Fool's journey seems to move smoothly from one order of experience to the next, but our learning adventures are usually not so tidy.
+
+* The Story 
+** 00.0  The Fool
+  The Juggler	The Magician
+  The Fool stands for each of us as we begin our journey of life.
+  He is a fool because only a simple soul has the innocent faith to undertake such a journey with all its hazards and pain.
+  He is also related to the concept of zero, which finds its echos in many religions around the world. Zero was an idea that had to be discovered, which means it had to be communicated, shared, advocated to stay alive.
+  Zen Bhudism Siddartha Buddha
+
+** 00.1  Travel, Life, Journey
+  At the start of his trip, the Fool is a newborn - fresh, open and spontaneous.
+  The figure on Card 0 has his arms flung wide, and his head held high.
+
+  Naive Curious enthusiastic lively adventerous untainted pure open embracing oblivious at the edge neutral potential raw balanced neutral
+  
+  On setting out, the Fool immediately encounters the Magician (1) and the High Priestess (2) - the great balancing forces that make up the perceived world.
+  It is a feature of the material universe that as soon as we name some aspect of experience, we automatically evoke its opposite.
+  
+** 01.0  The Magician 
+  The Juggler ("The Thimblerig, or Bateleur")		
+
+  divine
+  earth, air, fire and water
+  koy fish, inner eye, focussed, directed attention, goal oriented, impact, effect
+  balance, binary, unity, infinity
+  Cups, Coins, Swords as knives, baton Clubs, 
+  offscreen
+  
+  The Magician is the positive side.
+  He represents the active, masculine power of creative impulse.
+  He is also our conscious awareness.
+  The Magician is the force that allows us to impact the world through a concentration of individual will and power.
+
+** 02.0  The High Priestess 
+  The Popess The Gate of the Sanctuary
+   
+  horned diadem
+  lunar crescent 
+  divine
+  holy mother
+  dwelling settling
+  hidden, mystery, potential, creative solution, creativity, new ideas, unknown, unrealized, immaterial, to be expressed, the vail
+  
+  The High Priestess is the negative side.
+  She is the mysterious unconscious.
+  She provides the fertile ground in which creative events occur.
+  The High Priestess is our unrealized potential waiting for an active principle to bring it to expression.
+
+** 01.2  Good and Bad
+   
+  yin yang
+  The terms positive and negative do not imply "good" and "bad. " 
+  These are human distinctions that do not apply in the tarot.
+  The Magician and the High Priestess are absolutely equal in value and importance.
+  Each is necessary for balance.
+  We may view the negative as our Shadow, but without shadows, we cannot see the light, and without a ground of potential, we cannot create.
+  It is equally likely to suffer from either of the pair, most likely in many ways at the same time from both simultaneously. They can exist without each other and we can only grasp at their correlations, let alone state their causations definitively. This is subjects' matter.
+  Both of these pure forces have each a positive and a negative extreme, they are culturally all extremely common and well articulated.
+  We can see both ideas of feminine and masculine, manifested in the pair of rultes. There can be such a thing as too much and too little order, just as much as there can be too much or too little freedom. Any bias ,defended, presumes knowledge ,certainty, of causation.
+
+** 03.0	 The Empress
+  Queen
+  Mother - the warm, loving woman who nourishes and careing 
+  nature and sensation.
+  exploration of senses touches, tastes and smells.
+  unknown fog of war
+  
+  It is natural to delight in the abundant goodness of Mother Earth who surrounds us with her support.
+
+** 04.0  The Emperor
+   King Support / Protection
+  Father King, Crown, Cepter, 
+  Stability, power, protection, logic, realization; a great person; aid, reason, conviction, authority and will.
+  Reversed: Benevolence, compassion, credit; also confusion to enemies, obstruction, immaturity.
+
+  sits atop a stark, barren mountain,sterility of regulation, and unyielding power
+  
+  mars
+  patterns, control
+  structure, Rules, order, knowledge, predictable, sacrifice
+  opression, authority
+  
+  slaughter the goat,
+
+** 05.0  The Hierophant
+  The Pope ("High Priest")	The Master of the Mysteries
+  bridge between heaven and earth
+  mercy, and goodness, society
+  beliefs, traditions, culture, education, service, higher cause, teacher
+  maker of reality, organized belief systems, wisdom
+  arcane, mysteries, initiation, blessing, blind following
+  
+** 06.0	 The Lovers
+  Marriage	The Two entagled Roads
+  Before, he was mainly self-centered.
+  He yearns for relationship.
+  with relationship comes choice and consequences.
+  tree of knowledge of good and evil.
+  
+  Attraction, love, beauty, temptation overcome.
+  two people living in harmony, balancing each other, loving partnership.
+  
+  decision, choice, beleive, path.
+  
+** 07.0	 The Chariot
+  Osiris Triumphant
+  powerful but rigid ruler
+  discipline, war, strive, will-power, ego, goals, status, selfcontrol, identity, riding victoriously, commanding
+  accomplishment, victory, triumph, pride, 
+  Riot, trouble, dispute, defeat
+  
+** 08.0	 Strength
+  Fortitude / Sovereign -	The Muzzled Lion ("The Tamed Lion")
+  Power, energy, action, courage, magnanimity; also complete success and honours.
+  Despotism, abuse of power, weakness, discord, sometimes even disgrace
+  
+  accomplished self order, willful command of the Chariot, life continues and the foold nounters chaos. some of fortune and insight others of suffering and disillusionment
+  curage, patience and tolerance. kindliness and the softer power of a loving approach
+  
+** 09.0	 The Hermit 
+  The Wise Man ("The Sage" or "The Seeker of Truth and Justice") The Veiled Lamp
+
+  seeking purpose
+  meditation, reflection, self-awareness, seeing, truth, enlightenment
+  advice, direction, guidance
+  solitude, intraversion, discretion
+
+  an old man, carrying a tall wooden staff in one hand, a lit lantern containing a six-pointed star in the other hand, standing on a mountain peak. In the background is a mountain range.
+
+** 10.0	 The Wheel of Fortune 
+  Fortune / Increase	The Sphin / Luck
+  Destiny, fortune, luck, fate
+
+  found purpose
+  holistic, world, mysterious, events outside his control, trust, harmony, Beauty, God, Yahweh, 
+  connection, detailed intricate patterns, rythm, nature, cycles, interconnection, dependence, causality
+  movement, action, grand plan, big perspective, turning point, 
+  
+** 11.0	 Justice 
+  Jurist	Themis ("The Scales and Blade")
+  
+  justice holds a scale of gold in left hand, symbolizing a balanced decision, and a long metallic sword in the right hand, symbolizing consequences and execution.
+  
+  balance, right and wrong, judgement, amends 
+  cause and effect, self responsibility, 
+  looking to the left, look to the past, take responsibility for the the past and the future
+
+** 12.0	 The Hanged Man
+  Prudence	The Hanged Man
+  
+  nimbus, suspension
+  Norse god Odin, who suspended himself from a tree in order to gain knowledge
+  
+  life not tamed
+  personal cross, an experience too difficult to endure
+  defeated and lost. humbled, give up, let go
+  metamorphosis, turning upside down
+  give up control, let go, open and vulnerable
+  surrender to experiences, going with the flow, joy, serene and at peace
+
+** 13.0	 Death
+  Mortality / Nothingness	The Skeleton Reaper ("The Reaper", "The Scythe")
+  death of the familiar, transition from one state to another
+  
+  grim reaper, pale horsea, dead and dying people, kings, bishops and commoners
+  In the background are two towers and a setting or rising sun
+  The horse Death is standing above and over a prone king
+  
+  reduction in complexity, focus on essentials, basics, simplifying, creating space, 
+  leaving things behind, out-growing the current life/world
+  something new taking the place, birth of something new
+  
+** 14.0	 Temperance
+  Priest	The Two Urns ("The Genius of the Sun")	Art
+
+  person pouring liquid from one receptacle into another
+  moderation or voluntary self-restrain, calmness and self-control, humility and modesty,
+  
+  swung back and forth, experiencing the extremes
+  stability of temperance, poise and equilibrium, moderation
+  integrated into centered whole, glow with health graceful and soft 
+
+** 15.0	 The Devil
+  Typhon	Great Force
+  
+  the devil is humanities inner ignorance, hopelessness, slavery, chained, bondage, lazyness, despair, having been seduced, 
+  Two demons (one male, one female) with tails stand chained to the devil.
+
+  Devil has goat horns, bat wings, a reversed pentagram on the forehead, hand holding a torch. The Devil is standing on a square altar,
+  
+** 16.0	 The Tower
+  The House of God	The Castle of Plutus ("God-House")	Misery / Prison	The Beheaded Tower ("The Lightning-Struck Tower")	The Blasted Tower	(Sisyphus)
+  
+  The Tower is the ego fortress each of us has built around his beautiful inner core.
+  free himself his ignorance, only through the sudden change represented by the Tower.
+  monumental crisis can generate enough power to smash the walls of the Tower.
+  The Fool may need such a severe shakeup if he is to free himself, but the resulting revelation makes the painful experience worthwhile.
+  
+  a frightened shepherd cowering under a burning tree split by a bolt of lightning while sheep graze at its base.
+  Gray, cold and rock-hard, this fortress seems to protect but is really a prison.
+  enlightening bolt hit the top of the tower.
+  dark despair on the lower part of the image is blasted away in an instant, light of truth is free to shine on the top part of the image.
+  a burning tower being struck by lightning or fire from the sky, its top section dislodged and crumbling.
+  It has ejected the occupants who seem to be tumbling to their deaths. Two men are depicted in freefall from the top of the tower.
+  
+  calamity, ruin. unforeseen catastrophe
+  movement, change, breaking, crisis, sudden change, destruction, liberation change of status quo
+  sudden, disruptive revelation, and potentially destructive change.
+  
+** 17.0	 The Star
+  Osiris, The Dog Star ("Sirius")	Desolation / Air	The Star of the Magician
+
+  Peace, Purity, tranquility, serene calm, transparency, hope, inspiration, faith, bright prospects, inspiration, courage and enlightenment of the spiritual self
+  cloudless sky, Radiant stars shine 
+  heart is open, love pours out freely.
+  
+  A naked woman kneels by the water; one foot is in the water and one foot is on the land. Above her head is one large star, representing her core essences, and seven smaller stars, representing the chakras. In each hand she holds a jug. From one jug she pours a liquid into the water. From the other jug she pours a liquid onto the land.
+
+** 18.0	 The Moon
+  Comments / Water	The Twilight
+  
+  a night scene, two large pillars in the background.
+  The Moon shines rays of light above the pillars. 
+  a lake in the foreground, a crayfish emerges from the lake.
+  A wolf and a domesticated dog stand behind the lake and howl at the Moon.
+  moisture of fertilizing dew in great drops on the grass around the lake
+  
+  feeling, calm
+  illusion, dreamy, fantasy, susceptible, distorted, false truth, bizarre thoughts, 
+  creative immagination, unconscious, beautiful thoughts
+  deep-seated fears and anxieties arise, feel lost and bewildered.
+  life of the imagination apart from life of the spirit
+  
+** 19.0	 The Sun
+  Enlightenment / Fire	The Blazing Light
+  
+  The Sun's illumination shines in all the hidden places.
+  An infant rides a white horse under the anthropomorphized Sun, with sunflowers in the background.
+  The child of life holds a red flag, representing the blood of renewal while a smiling sun shines down on him
+  
+  conscious mind prevails over the fears and illusions of the unconscious. Innocence is renewed through discovery, bringing hope for the future.
+  riding to face a new day, Material happiness, fortunate marriage, contentment.
+  vibrant energy and enthusiasm, expansive assurance goodness of the world lucid clarity dispels the clouds and enlightens, radiant vitality, grand undertakings, realize his greatness.
+  attained knowledge, accomplishment, happiness and contentment, vitality, self-confidence and success, good things and positive outcomes 
+
+** 20.0	 Judgement
+  Creation ("The Last Judgment") The Awakening of the Dead (the Genius of the Dead)Judgement	The Aeon
+  
+  exiting a shell, shedding fake skin, rebirth, refreshed
+  light, forgiveness, purity, cleansed, 
+  
+  looking inward, counting,
+  clear sight, single goals, lightweight
+** 21.0	 The World
+  ("Time") Voyage / Earth	The Crown of the Magi	The Universe
+  
+  This cycle is over, the loop is closed, the circle is completed.
+  integration, wholeness, all encompassing, Kintsugi, infinity
+  focussed, flurishing, in lane, involvement
+  
+  a dancing woman Sophia, meaning Prudence or Wisdom, the fourth element, hovers above the Earth holding a staff in each hand, surrounded by a wreath
+  being watched by the four creatures: a man, a lion, an bull, and an eagle,the Lion is fire, the Bull is earth, the Man is air, and the Eagle is water.
+  
+  The figure is male and female, above and below, suspended between the heavens and the earth.
+  cycle of life It is completeness. cosmic consciousness
+  combined male and female energy on an inner level, which integrates opposites traits that arise in the personality charged by both energies
+
+  
+  The Fool renders service by sharing his unique gifts and talents and finds that he prospers at whatever he attempts.
+  Because he acts from inner certainty, the whole world conspires to see that his efforts are rewarded.
+
+   
+   
+* Groupings
+** Sapiocentric Archetypes
+    0 	  The Fool	
+    I	    The Juggler	The Magician 
+    II	  The Popess	The High Priestess	The Gate of the Sanctuary
+    III	  The Empress	Queen
+    IV	  The Emperor	King	Support / Protection
+    V	    The Pope	The Hierophant ("High Priest")	The Master of the Mysteries 
+    VI	  The Lovers	Marriage	The Two entagled Roads
+    IX	  The Hermit	The Wise Man ("The Sage" or "The Seeker of Truth and Justice") The Veiled Lamp	
+    XII	  The Hanged Man	Prudence	The Hanged Man	
+
+** Pure Ideas
+    VII	  The Chariot	Osiris Triumphant
+    VIII	Justice	Strength	Jurist	Themis ("The Scales and Blade")
+    X	    The Wheel of Fortune	Fortune / Increase	The Sphinx	
+    XI	  Strength	Fortitude ("Strength") Justice	Strength / Sovereign	The Muzzled Lion ("The Tamed Lion")	
+    XIII	Death	Mortality / Nothingness	The Skeleton Reaper ("The Reaper", "The Scythe")
+    XIV	  Temperance / Priest	The Two Urns ("The Genius of the Sun")	Art
+    XV	  The Devil	Typhon	Great Force
+    XVI	  The Tower The House of God	The Castle of Plutus ("God-House")	Misery / Prison	The Beheaded Tower ("The Lightning-Struck Tower")	The Blasted Tower	(Sisyphus)
+    XX	  Judgement	Creation ("The Last Judgment") The Awakening of the Dead (the Genius of the Dead)Judgement	The Aeon
+    XXI	  The World ("Time") Voyage / Earth	The Crown of the Magi	The Universe
+
+** Larger Forces
+ XVII	    The Star	Osiris, The Dog Star ("Sirius")	Desolation / Air	The Star of the Magician
+ XVIII	  The Moon	Comments / Water	The Twilight	
+ XIX	    The Sun	  Enlightenment / Fire	The Blazing Light
