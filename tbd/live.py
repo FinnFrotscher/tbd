@@ -1,32 +1,40 @@
-import os
-import datetime
-import cv2
-import math
-import time
+import os, datetime, cv2, math, time
 from os import path
 
-from diffusion.latents import image_to_latents, reset # get_latent_state, load_first_latents
-from image.get_image import get_primer_image
+from lib.compute import GPU
+from lib.state import save_loop
+from lib.camera import grab_image
 
-# from prompt.prompts import get_prompt
-# latents = load_first_latents()
+from lib.prompt import Prompt
+from lib.latent_image import latents
+
+
 # cv2.namedWindow("test2")
 
-cwd = path.join(os.getcwd())
-out_path = 'tbd/output'
-work_dir = path.normpath(path.join(cwd, '..', out_path))
+# latents = load_first_latents()
 
-
-def main_loop(loop_index=0):
+def main_loop(loop_index):
     # [sin, cos] = get_rate_of_change(loop_index)
-    # prompt = get_prompt(loop_index)
-    # print(prompt)
-    # text_embeds = prompt_to_embed(prompts)
+    prompt = get_prompt(loop_index)
+    text_embeds = prompt_to_embeds(prompt)
 
     primer_image = get_primer_image()
     primer_image_latents = image_to_latents(primer_image)
-    print(primer_image_latents)
 
+    latents.perturb(scale = 0.02)
+
+    # weigh this operation by rate_of_change.cos
+    main_latents = main_latents * primer_image_latents
+
+    latents = produce_latents(
+        text_embeds = text_embeds,
+        latents=latents,
+        num_inference_steps=num_inference_steps, guidance_scale=guidance_scale,
+        height=height, width=width,
+        start_step=start_step
+    )
+
+    # save_loop(index = loop_index, prompt = prompt, primer = primer_image, image = None )
     # TODO
     # i have the current latents, the primer latents, the prompt embeddings
     # and a sin and cosin wave
@@ -39,16 +47,6 @@ def main_loop(loop_index=0):
     # if that doesnt work i will have to merge the final image from the previous loop with the actual image from the camera with an aplpha effect and extract the latents of that.
     # i will blurr the combined latent space of the primer and the current latents
 
-    #x main_latents = perturb_latents(previous_latents, sin)
-    # how to multiply latent states?
-    #x main_latents = main_latents * primer_image_latents # weigh this operation by rate_of_change.cos
-    # latents = produce_latents(
-    #     text_embeds = text_embeds,
-    #     latents=latents,
-    #     num_inference_steps=num_inference_steps, guidance_scale=guidance_scale,
-    #     height=height, width=width,
-    #     start_step=start_step
-    # )
 
     #x frame = latents_to_image(main_latents)
     # full_image = get_image_from_frame(frame)
@@ -96,7 +94,8 @@ def run_main_loop():
             loop_index+=1
             main_loop(loop_index)
     finally:
-        reset()
+        print('Clean')
+        GPU.clean()
 
 # TODO
 # create_new_latent_state(previous latents, input image, prompt, rate of change)
