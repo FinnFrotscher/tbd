@@ -1,6 +1,7 @@
 # ignore default image save location and model symbolic link
 scripts/
 tbd/output/
+tbd/input/
 outputs/
 models/ldm/stable-diffusion-v1/model.ckpt
 

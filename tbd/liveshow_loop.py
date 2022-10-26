@@ -1,15 +1,16 @@
+import os
 import datetime
 import cv2
 import math
 import time
+from os import path
 
-from diffusion.latents import get_latent_state, load_first_latents
-from prompt.prompts import get_prompt
+from diffusion.latents import image_to_latents, reset # get_latent_state, load_first_latents
+from image.get_image import get_primer_image
 
-latents = load_first_latents()
-
-cam = cv2.VideoCapture(0)
-cv2.namedWindow("test2")
+# from prompt.prompts import get_prompt
+# latents = load_first_latents()
+# cv2.namedWindow("test2")
 
 cwd = path.join(os.getcwd())
 out_path = 'tbd/output'
@@ -17,12 +18,14 @@ work_dir = path.normpath(path.join(cwd, '..', out_path))
 
 
 def main_loop(loop_index=0):
-    [sin, cos] = get_rate_of_change(loop_index)
-    prompt = get_prompt(loop_index)
-    text_embeds = prompt_to_embed(prompts)
+    # [sin, cos] = get_rate_of_change(loop_index)
+    # prompt = get_prompt(loop_index)
+    # print(prompt)
+    # text_embeds = prompt_to_embed(prompts)
 
     primer_image = get_primer_image()
     primer_image_latents = image_to_latents(primer_image)
+    print(primer_image_latents)
 
     # TODO
     # i have the current latents, the primer latents, the prompt embeddings
@@ -36,9 +39,9 @@ def main_loop(loop_index=0):
     # if that doesnt work i will have to merge the final image from the previous loop with the actual image from the camera with an aplpha effect and extract the latents of that.
     # i will blurr the combined latent space of the primer and the current latents
 
-    main_latents = perturb_latents(previous_latents, sin)
+    #x main_latents = perturb_latents(previous_latents, sin)
     # how to multiply latent states?
-    main_latents = main_latents * primer_image_latents # weigh this operation by rate_of_change.cos
+    #x main_latents = main_latents * primer_image_latents # weigh this operation by rate_of_change.cos
     # latents = produce_latents(
     #     text_embeds = text_embeds,
     #     latents=latents,
@@ -47,13 +50,13 @@ def main_loop(loop_index=0):
     #     start_step=start_step
     # )
 
-    frame = latents_to_image(main_latents)
+    #x frame = latents_to_image(main_latents)
     # full_image = get_image_from_frame(frame)
     # display(full_image)
 
-    save_interval(index = loop_index, prompt = prompt, frame = frame, primer = primer_image)
+    #x save_interval(index = loop_index, prompt = prompt, frame = frame, primer = primer_image)
 
-    time.sleep(get_wait_time())
+    #x time.sleep(get_wait_time())
 
 
 def get_rate_of_change(loop_index):
@@ -61,10 +64,6 @@ def get_rate_of_change(loop_index):
     cos = round((math.cos(loop_index) +1 ) /2, 4)
     return [sin, cos]
 
-def get_primer_image():
-    ret, frame = cam.read()
-    if not ret: print("failed to grab frame")
-    return frame
 
 
 # TODO
@@ -79,7 +78,7 @@ def display(frame):
 def save_interval(index, prompt, frame, primer):
     timestamp = datetime.datetime.now().isoformat()
     # cv2.imwrite(work_path + f"frame_{loop_index}_{prompt.replace(' ', '_')}.png", frame)
-    cv2.imwrite(work_path + f"primer_{timestamp}}.png", primer)
+    cv2.imwrite(work_path + f"primer_{timestamp}.png", primer)
 
 # // to regulate FPS
 def get_wait_time():
@@ -91,9 +90,13 @@ def get_wait_time():
 
 def run_main_loop():
     loop_index = 0 # TODO persist to file
-    while True:
-        loop_index+=1
+    try:
         main_loop(loop_index)
+        while False:
+            loop_index+=1
+            main_loop(loop_index)
+    finally:
+        reset()
 
 # TODO
 # create_new_latent_state(previous latents, input image, prompt, rate of change)
@@ -107,7 +110,7 @@ def run_main_loop():
 
 run_main_loop()
 
-cam.release()
-del(cam)
-cv2.destroyAllWindows()
+# cam.release()
+# del(cam)
+# cv2.destroyAllWindows()
 
