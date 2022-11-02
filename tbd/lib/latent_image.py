@@ -9,50 +9,62 @@ from torch.nn import functional as F
 
 from lib.compute import GPU
 
-
 class LatentImage:
     latents = None
     height = 512
     width = 512
-    guidance_scale = 7.5
+    guidance_scale = 8
 
-    def __init__(self):
-        self.latents = torch.randn((1, GPU.unet.in_channels, self.height // 8, self.width // 8))
+    def from_text(self, text_embeddings, num_steps = 50, start_step = 0):
+        if self.latents is None:
+            self.latents = torch.randn((text_embeddings.shape[0] // 2, GPU.unet.in_channels, self.height // 8, self.width // 8))
 
-    def from_text(self, text_embedding, num_steps = 50, start_step = 0):
-        print('from text')
-        GPU.getMemStats()
-
-        temp_latents = self.latents.to(GPU.device)
-        GPU.scheduler.set_timesteps(num_steps)
+        self.latents = self.latents.to(GPU.device)
 
         if start_step > 0:
-            start_timestep = GPU.scheduler.timesteps[start_step]
-            start_timesteps = start_timestep.repeat(temp_latents.shape[0]).long()
+            scheduler_type = "DDIMscheduler"
+            scheduler = GPU.DDIMscheduler
+        else:
+            scheduler_type = "LMSDscheduler"
+            scheduler = GPU.LMSDscheduler
 
-            noise = torch.randn_like(temp_latents)
-            latents = scheduler.add_noise(temp_latents, noise, start_timesteps)
+        scheduler.set_timesteps(num_steps)
 
-        GPU.getMemStats()
+        if scheduler_type == "LMSDscheduler":
+            self.latents = self.latents * scheduler.sigmas[0]
+
+        if start_step > 0: # "DDIMscheduler"
+            start_timestep = scheduler.timesteps[start_step]
+            start_timesteps = start_timestep.repeat(self.latents.shape[0]).long()
+            noise = torch.randn_like(self.latents)
+            latents = scheduler.add_noise(self.latents, noise, start_timesteps)
+
         with autocast(GPU.device):
-            for i, t in tqdm(enumerate(GPU.scheduler.timesteps[start_step:])):
-                GPU.getMemStats()
+            for i, t in tqdm(enumerate(scheduler.timesteps[start_step:])):
+                if scheduler_type == "LMSDscheduler":
+                    scheduler_index = i
+                else:
+                    scheduler_index = t
+
                 # expand the latents if we are doing classifier-free guidance to avoid doing two forward passes.
-                latent_model_input = torch.cat([temp_latents] * 2)
+                latent_model_input = torch.cat([self.latents] * 2)
+
+                if scheduler_type == "LMSDscheduler":
+                    sigma = scheduler.sigmas[i]
+                    latent_model_input = latent_model_input / ((sigma ** 2 + 1) ** 0.5)
 
                 # predict the noise residual
                 with torch.no_grad():
-                    noise_pred = GPU.unet(latent_model_input, t, encoder_hidden_states=text_embedding)['sample']
+                    noise_pred = GPU.unet(latent_model_input, t, encoder_hidden_states=text_embeddings)['sample']
 
                 # perform guidance
                 noise_pred_uncond, noise_pred_text = noise_pred.chunk(2)
                 noise_pred = noise_pred_uncond + self.guidance_scale * (noise_pred_text - noise_pred_uncond)
 
                 # compute the previous noisy sample x_t -> x_t-1
-                temp_latents = GPU.scheduler.step(noise_pred, t, temp_latents)['prev_sample']
+                self.latents = scheduler.step(noise_pred, scheduler_index, self.latents)['prev_sample']
 
-        GPU.getMemStats()
-        self.latents = temp_latents
+
 
     def perturb(self, scale = 0):
         noise = torch.randn_like(self.latents)
@@ -72,23 +84,22 @@ class LatentImage:
         imgs = (imgs / 2 + 0.5).clamp(0, 1)
         imgs = imgs.detach().cpu().permute(0, 2, 3, 1).numpy()
         imgs = (imgs * 255).round().astype('uint8')
-        return Image.fromarray(imgs[0])
-        # print('imgs.shape', imgs.shape)
-        # pil_images = [Image.fromarray(image) for image in imgs]
-        # return pil_images[0]
+        return imgs[0]
 
     def from_image(self, image):
-        img = np.stack(np.array(image), axis=0)
-        img = img / 255.0
+        if not isinstance(image, list):
+            imgs = [image]
+
+        img_arr = np.stack([ np.array(img) for img in imgs ], axis=0)
+        img_arr = img_arr / 255.0
 
         # probably have to remove a dimension here
-        img_arr = torch.from_numpy(img).float().permute(0, 3, 1, 2)
-        img_arr = 2 * (img - 0.5)
+        img_arr = torch.from_numpy(img_arr).float().permute(0, 3, 1, 2)
+        img_arr = 2 * (img_arr - 0.5)
 
-        latent_dists = GPU.vae.encode(img.to(GPU.device)).latent_dist
-
-        latent_sample = latent_dists.sample()
-        latent_sample *= 0.18215
+        latent_dists = GPU.vae.encode(img_arr.to(GPU.device)).latent_dist
+        latent_samples = latent_dists.sample()
+        latent_samples *= 0.18215
 
         self.latents = latent_samples
 

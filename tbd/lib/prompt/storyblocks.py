@@ -16,7 +16,6 @@ situations = [
     "sitting on top of a mountain",
     "laying on the edge of a mountain",
 
-
     "a wild animal",
     "playing a wild animal",
     "taming a wild animal",

@@ -9,11 +9,12 @@ from lib.compute import GPU
 class Storyteller:
     prompt = ""
 
-    def __init__(self):
-        self.prompt = ""
+    def __init__(self, storybeat = 0):
+        # self.prompt = self.beat(storybeat = storybeat)
+        self.prompt = "a woman in a small village dancing around the fire, painting by davinci"
 
-    def beat(self, storybeat = 0): # sin = 0, cos = 0
-        # prompt = map_promp_state_to_prompt(prompt_state(sin, cos, index))
+    def beat(self, storybeat = 0):
+        return
         situation_index = storybeat % len(situations)
         situation_full_cycles = int( ( storybeat - situation_index) / len(situations) )
         situation = situations[situation_index]
@@ -30,22 +31,18 @@ class Storyteller:
         return self.prompt
 
     def to_embedding(self):
+        # print('prompt',self.prompt)
         # Tokenize text and get embeddings
-        text_input = GPU.tokenizer(
-            self.prompt,
-            padding='max_length',
-            max_length=GPU.tokenizer.model_max_length,
-            truncation=True,
-            return_tensors='pt'
-        )
+        prompt = [ self.prompt ]
+        text_input = GPU.tokenizer(prompt, padding='max_length', max_length=GPU.tokenizer.model_max_length, truncation=True, return_tensors='pt')
 
         with torch.no_grad():
             text_embeddings = GPU.text_encoder(text_input.input_ids.to(GPU.device))[0]
 
         # Do the same for unconditional embeddings
         uncond_input = GPU.tokenizer(
-            [''] * len(self.prompt), padding='max_length',
-            max_length= GPU.tokenizer.model_max_length, return_tensors='pt')
+            [''] * len(prompt), padding='max_length',
+            max_length=GPU.tokenizer.model_max_length, return_tensors='pt')
 
         with torch.no_grad():
             uncond_embeddings = GPU.text_encoder(uncond_input.input_ids.to(GPU.device))[0]
