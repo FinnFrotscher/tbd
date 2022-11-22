@@ -27,6 +27,7 @@ class LatentImage:
         else:
             scheduler_type = "LMSDscheduler"
             scheduler = GPU.LMSDscheduler
+        print('scheduler_type',scheduler_type)
 
         scheduler.set_timesteps(num_steps)
 
@@ -63,8 +64,6 @@ class LatentImage:
 
                 # compute the previous noisy sample x_t -> x_t-1
                 self.latents = scheduler.step(noise_pred, scheduler_index, self.latents)['prev_sample']
-
-
 
     def perturb(self, scale = 0):
         noise = torch.randn_like(self.latents)

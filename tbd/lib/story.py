@@ -11,7 +11,7 @@ class Storyteller:
 
     def __init__(self, storybeat = 0):
         # self.prompt = self.beat(storybeat = storybeat)
-        self.prompt = "a woman in a small village dancing around the fire, painting by davinci"
+        self.prompt = "kid with a yautja predator head, cartoon style, like bojack horseman, brad neely "
 
     def beat(self, storybeat = 0):
         return

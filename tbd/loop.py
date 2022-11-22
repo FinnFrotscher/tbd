@@ -1,14 +1,11 @@
 import os, datetime, cv2, math, time, gc, torch
-from os import path
 import climage
-
+from os import path
 from PIL import Image, ImageDraw
-
 from lib.compute import GPU
 from lib.camera import Camera
 from lib.story import Storyteller
 from lib.latent_image import LatentImage
-
 from lib.state import save_loop, store_image
 
 camera = Camera()
@@ -16,8 +13,12 @@ story = Storyteller()
 story_latents = LatentImage()
 primer_latent_image = LatentImage()
 
-
 def main_loop(loop_index):
+    print(' ')
+    print(' ')
+    print('start', loop_index)
+    GPU.getMemStats()
+
     # get latent space for camera view
     primer_latent_image.from_image(camera.grab_image(loop_index))
     # img = primer_latent_image.to_image()
@@ -28,29 +29,30 @@ def main_loop(loop_index):
     # store_image(img, f'mixed/{loop_index}.png')
 
     # train the mixed latents on story
-    story.beat(loop_index)
+    # story.beat(loop_index)
     text_embeddings = story.to_embedding()
-
+    
     story_latents.perturb(scale = 0.4)
     # img = story_latents.to_image()
     # store_image(img, f'perturbed/{loop_index}.png')
 
     story_latents.from_text(text_embeddings, num_steps = 45)
-    # img = story_latents.to_image()
-    # store_image(img, f'final/{loop_index}.png')
+    img = story_latents.to_image()
+    store_image(img, f'final/{loop_index}.png')
 
     # save_loop(index = loop_index, prompt = prompt, primer = primer_image, image = None )
-    #x time.sleep(get_wait_time())
-
+    # time.sleep(get_wait_time())
 
 def run_main_loop():
     loop_index = 100 # TODO persist to file
+
     story_latents.from_text(story.to_embedding(), num_steps = 30)
     img = story_latents.to_image()
     store_image(img, 'base.png')
 
     try:
         while loop_index < 110:
+            print('loop', loop_index)
             main_loop(loop_index)
             loop_index+=1
             torch.cuda.empty_cache()

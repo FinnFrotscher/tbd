@@ -34,6 +34,7 @@ class GPUHandler:
         self.vae.to(self.device)
         self.unet.to(self.device)
         self.text_encoder.to(self.device)
+        self.getMemStats()
 
 
     def getMemStats(self):
@@ -46,6 +47,8 @@ class GPUHandler:
         self.scheduler = None
         self.tokenizer = None
         self.text_encoder = None
+
+        self.vae.destroy() 
 
         torch.cuda.empty_cache()
         gc.collect()
