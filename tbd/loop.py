@@ -1,5 +1,4 @@
 import os, datetime, cv2, math, time, gc, torch
-import climage
 from os import path
 from PIL import Image, ImageDraw
 from lib.compute import GPU
@@ -10,53 +9,63 @@ from lib.state import save_loop, store_image
 
 camera = Camera()
 story = Storyteller()
-story_latents = LatentImage()
-primer_latent_image = LatentImage()
 
-def main_loop(loop_index):
-    print(' ')
-    print(' ')
-    print('start', loop_index)
-    GPU.getMemStats()
+def main_loop(loop_index, prev_step_image):
+
+    story_latents = LatentImage()
+    primer_latent_image = LatentImage()
+
+    story_latents.from_image(prev_step_image)
+
+    # img = story_latents.to_image()
+    # store_image(img, 'base.png')
 
     # get latent space for camera view
     primer_latent_image.from_image(camera.grab_image(loop_index))
-    # img = primer_latent_image.to_image()
+    img = primer_latent_image.to_image()
     # store_image(img, f'primer/{loop_index}.png')
 
     story_latents.merge_with(primer_latent_image.latents, scale = 0.5)
-    # img = story_latents.to_image()
-    # store_image(img, f'mixed/{loop_index}.png')
+    img = story_latents.to_image()
+    store_image(img, f'mixed/{loop_index}.png')
+
+    story_latents.perturb(scale = 0.8)
+    img = story_latents.to_image()
+    store_image(img, f'perturbed/{loop_index}.png')
 
     # train the mixed latents on story
     # story.beat(loop_index)
-    text_embeddings = story.to_embedding()
-    
-    story_latents.perturb(scale = 0.4)
-    # img = story_latents.to_image()
-    # store_image(img, f'perturbed/{loop_index}.png')
 
-    story_latents.from_text(text_embeddings, num_steps = 45)
+    story_latents.from_text(story.to_embedding(), num_steps = 45)
     img = story_latents.to_image()
     store_image(img, f'final/{loop_index}.png')
+    next_step_image = img
 
     # save_loop(index = loop_index, prompt = prompt, primer = primer_image, image = None )
     # time.sleep(get_wait_time())
 
+    del story_latents
+    del primer_latent_image
+    torch.cuda.empty_cache()
+    gc.collect()
+    return next_step_image
+
 def run_main_loop():
     loop_index = 100 # TODO persist to file
 
-    story_latents.from_text(story.to_embedding(), num_steps = 30)
-    img = story_latents.to_image()
-    store_image(img, 'base.png')
+    init_latents = LatentImage()
+    init_latents.from_text(story.to_embedding(), num_steps = 30)
+    img = init_latents.to_image()
+    del init_latents
 
     try:
         while loop_index < 110:
+            print(' ')
+            print(' ')
             print('loop', loop_index)
-            main_loop(loop_index)
+            GPU.getMemStats(f'pre loop: {loop_index}' )
+            img = main_loop(loop_index, img)
             loop_index+=1
-            torch.cuda.empty_cache()
-            gc.collect()
     finally:
         print('Clean')
         GPU.clean()
@@ -77,7 +86,6 @@ def run_main_loop():
 #     # currently: # after previous loop finished and second/x passed.
 #     # future: # later may be controlled by performance monitor
 #     return 5000/1000
-
 
 
 run_main_loop()

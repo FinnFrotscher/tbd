@@ -26,6 +26,6 @@ class Camera:
         image = image[int(y):int(y+h), int(x):int(x+w)]
 
         # scale to model input
-        image = cv2.resize(image, (512, 512))
+        image = cv2.resize(image, (256, 256))
         return image
 

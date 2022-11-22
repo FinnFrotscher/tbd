@@ -11,8 +11,8 @@ from lib.compute import GPU
 
 class LatentImage:
     latents = None
-    height = 512
-    width = 512
+    height = 256
+    width = 256
     guidance_scale = 8
 
     def from_text(self, text_embeddings, num_steps = 50, start_step = 0):
@@ -27,7 +27,7 @@ class LatentImage:
         else:
             scheduler_type = "LMSDscheduler"
             scheduler = GPU.LMSDscheduler
-        print('scheduler_type',scheduler_type)
+        print('scheduler_type', scheduler_type)
 
         scheduler.set_timesteps(num_steps)
 
