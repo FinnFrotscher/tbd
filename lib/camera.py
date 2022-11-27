@@ -17,7 +17,7 @@ size = output_dimensions
 class Camera:
     def grab_image(self, index):
         filename = 'output_{0:04d}.png'.format(index)
-        image_path = os.path.normpath(os.path.join(cwd, '..', f'tbd/input/dance/{filename}'))
+        image_path = os.path.normpath(os.path.join(cwd, '..', f'input/dance/{filename}'))
 
         image = Image(from_path = image_path)
         image.trim_to_square()

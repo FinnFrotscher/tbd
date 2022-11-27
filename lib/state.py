@@ -3,7 +3,7 @@ from os import path
 from tinydb import TinyDB
 
 root_path = path.join(os.getcwd())
-out_path = path.normpath(path.join(root_path, '..',  'tbd/output/'))
+out_path = path.normpath(path.join(root_path, '..',  'output/'))
 db_path = path.normpath(path.join(out_path, 'db.json'))
 
 db = TinyDB(db_path)

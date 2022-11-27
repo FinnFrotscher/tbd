@@ -16,7 +16,7 @@ class Image:
             self.raw = img
 
     def store(self, filename):
-        input_path = f'tbd/output/{filename}'
+        input_path = f'output/{filename}'
         image_path = os.path.normpath(os.path.join(cwd, '..', input_path))
         Path(os.path.normpath(os.path.join(image_path, '..'))).mkdir(parents=True, exist_ok=True)
         cv2.imwrite(image_path, self.raw)
