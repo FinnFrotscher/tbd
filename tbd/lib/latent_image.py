@@ -1,19 +1,19 @@
 import argparse, os, sys, glob, cv2, gc
 import numpy as np
 import torch
+from globals import *
+from lib.image import Image
 from os import path
 from tqdm.auto import tqdm
-from PIL import Image, ImageDraw
 from torch import autocast
 from torch.nn import functional as F
-
 from lib.compute import GPU
 
 class LatentImage:
     latents = None
-    height = 256
-    width = 256
-    guidance_scale = 8
+    height = output_dimensions
+    width = output_dimensions
+    guidance_scale = 7.5
 
     def from_text(self, text_embeddings, num_steps = 50, start_step = 0):
         if self.latents is None:
@@ -24,9 +24,9 @@ class LatentImage:
         if start_step > 0:
             scheduler_type = "DDIMscheduler"
             scheduler = GPU.DDIMscheduler
-        else:
-            scheduler_type = "LMSDscheduler"
-            scheduler = GPU.LMSDscheduler
+        # else:
+        scheduler_type = "LMSDscheduler"
+        scheduler = GPU.LMSDscheduler
         print('scheduler_type', scheduler_type)
 
         scheduler.set_timesteps(num_steps)
@@ -34,7 +34,7 @@ class LatentImage:
         if scheduler_type == "LMSDscheduler":
             self.latents = self.latents * scheduler.sigmas[0]
 
-        if start_step > 0: # "DDIMscheduler"
+        if scheduler_type == "DDIMscheduler":
             start_timestep = scheduler.timesteps[start_step]
             start_timesteps = start_timestep.repeat(self.latents.shape[0]).long()
             noise = torch.randn_like(self.latents)
@@ -83,11 +83,11 @@ class LatentImage:
         imgs = (imgs / 2 + 0.5).clamp(0, 1)
         imgs = imgs.detach().cpu().permute(0, 2, 3, 1).numpy()
         imgs = (imgs * 255).round().astype('uint8')
-        return imgs[0]
+        return Image(imgs[0])
 
     def from_image(self, image):
         if not isinstance(image, list):
-            imgs = [image]
+            imgs = [image.raw]
 
         img_arr = np.stack([ np.array(img) for img in imgs ], axis=0)
         img_arr = img_arr / 255.0

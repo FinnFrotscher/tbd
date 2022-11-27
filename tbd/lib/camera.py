@@ -1,8 +1,10 @@
 import cv2, os
-from os import path
+import numpy as np
+from lib.image import Image
+from globals import *
 # cam = cv2.VideoCapture(0)
 
-cwd = path.join(os.getcwd())
+cwd = os.path.join(os.getcwd())
 
 # cam.release()
 # del(cam)
@@ -10,22 +12,15 @@ cwd = path.join(os.getcwd())
 # # ret, frame = cam.read()
 # # if not ret: print("failed to grab frame")
 
+size = output_dimensions
+
 class Camera:
     def grab_image(self, index):
-        # get file
         filename = 'output_{0:04d}.png'.format(index)
-        image_path = path.normpath(path.join(cwd, '..', f'tbd/input/dance/{filename}'))
-        image = cv2.imread(image_path)#, cv2.COLOR_BGR2RGB)
+        image_path = os.path.normpath(os.path.join(cwd, '..', f'tbd/input/dance/{filename}'))
 
-        # crop on center
-        shape = image.shape
-        h = min(shape[0], shape[1])
-        w = min(shape[0], shape[1])
-        x = shape[1]/2 - w/2
-        y = shape[0]/2 - h/2
-        image = image[int(y):int(y+h), int(x):int(x+w)]
-
-        # scale to model input
-        image = cv2.resize(image, (256, 256))
+        image = Image(from_path = image_path)
+        image.trim_to_square()
+        image.resize(size)
         return image
 

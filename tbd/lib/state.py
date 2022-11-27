@@ -9,10 +9,6 @@ db_path = path.normpath(path.join(out_path, 'db.json'))
 db = TinyDB(db_path)
 cwd = path.join(os.getcwd())
 
-def store_image(image, filename):
-    input_path = f'tbd/output/{filename}'
-    image_path = path.normpath(path.join(cwd, '..', input_path))
-    cv2.imwrite(image_path, image)
 
     # img_path = f"/home/finn/code/tbd/tbd/output/tmp-{name}.png"
     # output = climage.convert(img_path, width=80, is_unicode=True)
