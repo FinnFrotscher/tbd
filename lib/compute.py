@@ -29,8 +29,8 @@ class GPUHandler:
         self.tokenizer = CLIPTokenizer.from_pretrained(path.join(modelpath, 'tokenizer'))
         self.text_encoder = CLIPTextModel.from_pretrained(path.join(modelpath, 'text_encoder'))
 
-        self.LMSDscheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
-        self.DDIMscheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
+        # self.LMSDscheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
+        # self.DDIMscheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
 
         self.vae.eval()
         self.unet.eval()
@@ -48,7 +48,7 @@ class GPUHandler:
     def clean(self):
         self.vae = None
         self.unet = None
-        self.scheduler = None
+        # self.scheduler = None
         self.tokenizer = None
         self.text_encoder = None
 

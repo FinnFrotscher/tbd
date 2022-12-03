@@ -2,8 +2,7 @@ import cv2, os
 from pathlib import Path
 from PIL import Image as PILImage, ImageDraw as PILImageDraw
 import numpy as np
-
-cwd = os.path.join(os.getcwd())
+from globals import *
 
 class Image:
     raw = None
@@ -17,7 +16,8 @@ class Image:
 
     def store(self, filename):
         input_path = f'output/{filename}'
-        image_path = os.path.normpath(os.path.join(cwd, '..', input_path))
+        image_path = os.path.normpath(os.path.join(root_dir, input_path))
+        print(image_path)
         Path(os.path.normpath(os.path.join(image_path, '..'))).mkdir(parents=True, exist_ok=True)
         cv2.imwrite(image_path, self.raw)
 

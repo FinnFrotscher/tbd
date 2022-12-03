@@ -13,12 +13,11 @@ def main_loop(loop_index, prev_step_image):
     story_latents = LatentImage()
     # primer_latent_image = LatentImage()
 
-    # prev_step_image.apply_brightness_contrast(0,0)
+    prev_step_image.apply_brightness_contrast()
     story_latents.from_image(prev_step_image)
     del prev_step_image
 
     # primer_image = camera.grab_image(loop_index)
-    # primer_image.apply_brightness_contrast()
     # primer_image.gray()
 
     # primer_latent_image.from_image(primer_image)
@@ -27,13 +26,13 @@ def main_loop(loop_index, prev_step_image):
     # img = story_latents.to_image()
     # img.store(f'mixed/{loop_index}.png')
 
-    story_latents.perturb(scale = 0.1)
+    story_latents.perturb(scale = 0.2)
     img = story_latents.to_image()
     img.store(f'perturbed/{loop_index}.png')
 
     # story.beat(loop_index)
 
-    story_latents.from_text(story.to_embedding(), start_step = 40, num_steps = 80)
+    story_latents.from_text(story.to_embedding(), num_steps = 40)
     img = story_latents.to_image()
     img.store(f'final/{loop_index}.png')
     next_step_image = img

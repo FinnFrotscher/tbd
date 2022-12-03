@@ -1,6 +1,8 @@
 import argparse, os, sys, glob, cv2, gc
 import numpy as np
 import torch
+from diffusers import PNDMScheduler, LMSDiscreteScheduler
+from diffusers.schedulers.scheduling_ddim import DDIMScheduler
 from globals import *
 from lib.image import Image
 from os import path
@@ -21,12 +23,16 @@ class LatentImage:
 
         self.latents = self.latents.to(GPU.device)
 
-        if start_step > 0:
-            scheduler_type = "DDIMscheduler"
-            scheduler = GPU.DDIMscheduler
+        # if start_step > 0:
+        #     scheduler_type = "DDIMscheduler"
+        #     scheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
         # else:
+        #     scheduler_type = "LMSDscheduler"
+        #     scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
+        # scheduler_type = "DDIMscheduler"
+        # scheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
         scheduler_type = "LMSDscheduler"
-        scheduler = GPU.LMSDscheduler
+        scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule='scaled_linear', num_train_timesteps=1000)
         print('scheduler_type', scheduler_type)
 
         scheduler.set_timesteps(num_steps)
@@ -64,6 +70,8 @@ class LatentImage:
 
                 # compute the previous noisy sample x_t -> x_t-1
                 self.latents = scheduler.step(noise_pred, scheduler_index, self.latents)['prev_sample']
+
+            del scheduler
 
     def perturb(self, scale = 0):
         noise = torch.randn_like(self.latents)
